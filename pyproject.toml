@@ -4,7 +4,7 @@ build-backend = "hatchling.build"
 
 [project]
 name = "sourceth"
-version = "0.1.0"
+version = "1.0.0"
 description = "Descargador seguro y reproducible de fuentes publicadas de contratos EVM mediante Foundry Cast."
 readme = "README.md"
 requires-python = ">=3.12,<3.15"
