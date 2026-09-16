@@ -1,0 +1,26 @@
+# Sourceth solo lee este archivo cuando se pasa con --config.
+chain_id = 1
+output_dir = "./downloads"
+cast_path = "cast"
+rpc_url_env = "ETH_RPC_URL"
+api_key_env = "ETHERSCAN_API_KEY"
+process_timeout_seconds = 30.0
+download_timeout_seconds = 120.0
+retry_max_attempts = 3
+retry_base_delay_seconds = 0.5
+retry_max_delay_seconds = 8.0
+retry_budget_seconds = 300.0
+cache_ttl_seconds = 86400
+proxy_max_depth = 5
+proxy_max_addresses = 10
+max_files = 2000
+max_file_size_bytes = 10485760
+max_total_size_bytes = 104857600
+max_output_bytes = 1048576
+
+# Cada red adicional debe fijar explícitamente los endpoints HTTPS de confianza.
+# [networks."137"]
+# name = "polygon-mainnet"
+# provider = "etherscan"
+# explorer_api_url = "https://api.etherscan.io/v2/api"
+# explorer_url = "https://polygonscan.com"
