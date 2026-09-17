@@ -42,11 +42,11 @@ jobs:
 
       - name: Pruebas offline (Windows)
         if: runner.os == 'Windows'
-        run: uv run pytest -m "not real" --cov=sourceth --cov-report=term-missing
+        run: uv run pytest -m "not real" --cov=src --cov-report=term-missing
 
       - name: Pruebas offline (Linux)
         if: runner.os == 'Linux'
         # Linux no ejecuta las rutas de Job Object y otras ramas exclusivas de Windows.
         # Se conserva el umbral global de 85% en pyproject.toml para Windows y se
         # aplica aquí el mínimo reproducible observado para la plataforma Linux.
-        run: uv run pytest -m "not real" --cov=sourceth --cov-report=term-missing --cov-fail-under=84
+        run: uv run pytest -m "not real" --cov=src --cov-report=term-missing --cov-fail-under=84
