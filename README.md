@@ -23,6 +23,11 @@
   <a href="https://github.com/Roger08G/sourceth/blob/main/.github/dependabot.yml"><img src="https://img.shields.io/badge/dependencies-Dependabot-025E8C?logo=dependabot&amp;logoColor=white" alt="Dependabot"></a>
 </p>
 
+<p align="center">
+  <img src="docs/assets/sourceth-cli-output.svg" alt="Ejemplo de salida del CLI de Sourceth" width="100%">
+</p>
+<p align="center"><sub>Ejemplo determinista del flujo del CLI con el fixture offline de integración.</sub></p>
+
 Sourceth es un CLI y una biblioteca Python que usa Foundry Cast para descargar las fuentes que un
 explorador publica para **una dirección EVM por ejecución**. Valida la entrada, puede comprobar el
 bytecode por RPC, sigue tres patrones de proxy estándar de forma opcional y crea revisiones locales
