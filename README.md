@@ -23,11 +23,6 @@
   <a href="https://github.com/Roger08G/sourceth/blob/main/.github/dependabot.yml"><img src="https://img.shields.io/badge/dependencies-Dependabot-025E8C?logo=dependabot&amp;logoColor=white" alt="Dependabot"></a>
 </p>
 
-<p align="center">
-  <img src="docs/assets/sourceth-cli-output.svg" alt="Ejemplo de salida del CLI de Sourceth" width="100%">
-</p>
-<p align="center"><sub>Ejemplo determinista del flujo del CLI con el fixture offline de integración.</sub></p>
-
 Sourceth es un CLI y una biblioteca Python que usa Foundry Cast para descargar las fuentes que un
 explorador publica para **una dirección EVM por ejecución**. Valida la entrada, puede comprobar el
 bytecode por RPC, sigue tres patrones de proxy estándar de forma opcional y crea revisiones locales
@@ -37,6 +32,8 @@ con hashes y procedencia.
 > Sourceth no es un enumerador masivo, un framework de explotación, un decompilador ni un auditor.
 > Una fuente descargada tampoco se presenta como el repositorio original ni como una prueba de
 > recompilación idéntica del bytecode desplegado.
+
+![banner](./images/banner.png)
 
 ## Índice
 
@@ -173,6 +170,10 @@ Opciones principales:
 - `--timeout`: timeout de la descarga en segundos.
 - `--json`: reserva stdout para un único documento JSON; los logs van a stderr.
 - `--verbose`: aumenta el detalle de logs, siempre con redacción.
+
+La salida humana usa colores y tablas cuando se ejecuta en una terminal. Se desactiva
+automáticamente al redirigir stdout y también puede deshabilitarse con `NO_COLOR=1`. El modo
+`--json` nunca incluye códigos ANSI.
 
 El modo `explorer` no es un fallback silencioso: registra `code_validation_status=skipped`, motivo
 `explorer_only` y bloque `null`. En V1 es incompatible con `--block` y `--follow-proxy`.

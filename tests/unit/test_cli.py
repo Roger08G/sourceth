@@ -3,11 +3,13 @@
 from __future__ import annotations
 
 import json
+from io import StringIO
 from pathlib import Path
 from types import MappingProxyType
 from typing import cast
 
 import pytest
+from rich.console import Console
 
 import src.cli as cli
 from src.adapters.cast import CastCapabilities
@@ -23,6 +25,7 @@ from src.models import (
     OverallStatus,
     SourceStatus,
 )
+from src.presentation import render_result
 
 ADDRESS = "0x" + ("1" * 40)
 
@@ -170,9 +173,36 @@ def test_human_fetch_keeps_diagnostics_out_of_stdout(
     assert cli.main(["fetch", ADDRESS]) == 3
 
     captured = capsys.readouterr()
-    assert "Estado: partial" in captured.out
+    assert "Descarga parcial" in captured.out
     assert "TEST_FAILURE" not in captured.out
     assert "TEST_FAILURE" in captured.err
+    assert "\x1b[" not in captured.out + captured.err
+
+
+def test_human_fetch_uses_color_when_stdout_is_a_terminal(tmp_path: Path) -> None:
+    stdout = StringIO()
+    stderr = StringIO()
+    render_result(
+        _result(tmp_path, OverallStatus.COMPLETE),
+        console=Console(
+            file=stdout,
+            force_terminal=True,
+            color_system="standard",
+            width=140,
+            highlight=False,
+        ),
+        error_console=Console(
+            file=stderr,
+            force_terminal=True,
+            color_system="standard",
+            width=140,
+            highlight=False,
+        ),
+    )
+
+    assert "\x1b[" in stdout.getvalue()
+    assert "Descarga completada" in stdout.getvalue()
+    assert stderr.getvalue() == ""
 
 
 @pytest.mark.parametrize(

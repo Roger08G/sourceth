@@ -15,6 +15,7 @@ from .config import ConfigOverrides, SourcethConfig, load_config
 from .errors import ErrorCode, SourcethError
 from .manifest import result_json
 from .models import DownloadRequest, DownloadResult, OverallStatus
+from .presentation import render_doctor, render_error, render_result
 from .service import SourceDownloader
 
 LOGGER = logging.getLogger("sourceth")
@@ -227,9 +228,7 @@ def _doctor(args: argparse.Namespace) -> int:
     if args.json:
         print(json.dumps(payload, ensure_ascii=True, sort_keys=True))
     else:
-        print(f"Doctor: {status}")
-        for check in checks:
-            print(f"- {check['name']}: {check['status']}")
+        render_doctor(status, checks)
     return 0 if status == "ok" else 2
 
 
@@ -260,20 +259,7 @@ def _fetch(args: argparse.Namespace) -> int:
 
 
 def _print_result(result: DownloadResult) -> None:
-    print(f"Estado: {result.status.value}")
-    print(f"Dirección: {result.checksum_address}")
-    if result.manifest_path is not None:
-        print(f"Manifiesto: {result.manifest_path}")
-    for contract in result.contracts:
-        code_status = contract.code_validation_status.value
-        print(
-            f"- {contract.checksum_address} ({contract.role.value}): "
-            f"fuentes={contract.source_status.value}, código={code_status}"
-        )
-        for error in contract.errors:
-            print(f"  error {error.code}: {error.message}", file=sys.stderr)
-    for error in result.errors:
-        print(f"Error {error.code}: {error.message}", file=sys.stderr)
+    render_result(result)
 
 
 def _result_exit_code(status: OverallStatus) -> int:
@@ -297,7 +283,20 @@ def _emit_error(error: SourcethError, *, json_output: bool) -> None:
         }
         print(json.dumps(payload, ensure_ascii=True, sort_keys=True))
     else:
-        print(f"Error {error.code.value}: {error.message}", file=sys.stderr)
+        render_error(error)
+
+
+def _configure_logging(*, verbose: bool) -> None:
+    """Activa diagnóstico propio sin inundar la terminal con dependencias."""
+
+    logging.basicConfig(
+        level=logging.WARNING,
+        stream=sys.stderr,
+        format="%(levelname)s: %(message)s",
+    )
+    logging.getLogger().setLevel(logging.WARNING)
+    LOGGER.setLevel(logging.DEBUG if verbose else logging.WARNING)
+    logging.getLogger("filelock").setLevel(logging.WARNING)
 
 
 def main(argv: Sequence[str] | None = None) -> int:
@@ -315,11 +314,7 @@ def main(argv: Sequence[str] | None = None) -> int:
             parser.print_usage(file=sys.stderr)
         _emit_error(error, json_output=json_output)
         return 2
-    logging.basicConfig(
-        level=logging.DEBUG if getattr(args, "verbose", False) else logging.WARNING,
-        stream=sys.stderr,
-        format="%(levelname)s: %(message)s",
-    )
+    _configure_logging(verbose=bool(getattr(args, "verbose", False)))
     json_output = bool(getattr(args, "json", False))
     try:
         if args.command == "doctor":
