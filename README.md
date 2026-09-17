@@ -326,3 +326,7 @@ Las lecturas prefieren EIP-1898 por hash; si el nodo no lo soporta de forma ineq
 número fijado y comprueban de nuevo su hash antes de publicar.
 
 Más detalle en [`docs/architecture.md`](docs/architecture.md).
+
+## Licencia
+
+[MIT](https://github.com/Roger08G/sourceth/blob/main/LICENSE)
