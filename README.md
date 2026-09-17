@@ -10,7 +10,7 @@
 <br/>
 
 <p align="center">
-  <strong>🌟 Descarga segura y reproducible de fuentes verificadas de contratos EVM. 🌟</strong><br>
+  <strong>🏮 Descarga segura y reproducible de fuentes verificadas de contratos EVM 🏮</strong><br>
 </p>
 
 <p align="center">
