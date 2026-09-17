@@ -8,8 +8,8 @@ from typing import cast
 
 import pytest
 
-from sourceth.config import ConfigOverrides, NetworkConfig, SecretValue, load_config
-from sourceth.errors import ConfigurationError, ErrorCode, SourcethError
+from src.config import ConfigOverrides, NetworkConfig, SecretValue, load_config
+from src.errors import ConfigurationError, ErrorCode, SourcethError
 
 
 def test_load_config_uses_documented_defaults_without_process_environment() -> None:
@@ -358,7 +358,7 @@ def test_default_dotenv_inside_a_previous_download_is_rejected_before_merge(
     )
     monkeypatch.chdir(sources)
     monkeypatch.setattr(
-        "sourceth.config.dotenv_values",
+        "src.config.dotenv_values",
         lambda **_kwargs: pytest.fail("el .env descargado no debe llegar a parsearse"),
     )
 

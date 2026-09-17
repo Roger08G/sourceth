@@ -8,11 +8,11 @@ from pathlib import Path
 
 import pytest
 
-from sourceth.adapters.cast import CastAdapter
-from sourceth.adapters.process import ProcessRunner
-from sourceth.config import ConfigOverrides, load_config
-from sourceth.models import CodeValidationStatus, DownloadRequest, OverallStatus, SourceStatus
-from sourceth.service import SourceDownloader
+from src.adapters.cast import CastAdapter
+from src.adapters.process import ProcessRunner
+from src.config import ConfigOverrides, load_config
+from src.models import CodeValidationStatus, DownloadRequest, OverallStatus, SourceStatus
+from src.service import SourceDownloader
 
 WETH_MAINNET = "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2"
 

@@ -17,13 +17,13 @@ dependencies = [
 ]
 
 [project.scripts]
-sourceth = "sourceth.cli:main"
+sourceth = "src.cli:main"
 
 [dependency-groups]
 dev = ["mypy>=1.15,<2", "pytest>=8.3,<10", "pytest-cov>=6,<8", "ruff>=0.11,<1"]
 
 [tool.hatch.build.targets.wheel]
-packages = ["src/sourceth"]
+packages = ["src"]
 
 [tool.pytest.ini_options]
 addopts = "--strict-config --strict-markers"
@@ -32,7 +32,7 @@ markers = ["real: prueba opt-in que requiere Cast, red y credenciales reales"]
 
 [tool.coverage.run]
 branch = true
-source = ["sourceth"]
+source = ["src"]
 
 [tool.coverage.report]
 fail_under = 85

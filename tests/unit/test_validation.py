@@ -6,9 +6,9 @@ from typing import cast
 
 import pytest
 
-from sourceth.errors import ConfigurationError, ErrorCode, ValidationError
-from sourceth.models import DownloadRequest
-from sourceth.validation import (
+from src.errors import ConfigurationError, ErrorCode, ValidationError
+from src.models import DownloadRequest
+from src.validation import (
     runtime_bytecode_keccak,
     validate_address,
     validate_block_hash,

@@ -200,7 +200,7 @@ garantiza que el proveedor o el plan de API la soporten.
 ```python
 from pathlib import Path
 
-from sourceth import DownloadRequest, SourceDownloader, load_config
+from src import DownloadRequest, SourceDownloader, load_config
 
 config = load_config(dotenv_path=Path(".env"))
 downloader = SourceDownloader(config)
@@ -285,7 +285,7 @@ Suite normal, sin Internet, Foundry ni secretos:
 uv run ruff check .
 uv run ruff format --check .
 uv run mypy src tests
-uv run pytest -m "not real" --cov=sourceth --cov-report=term-missing
+uv run pytest -m "not real" --cov=src --cov-report=term-missing
 ```
 
 Pruebas reales opt-in:

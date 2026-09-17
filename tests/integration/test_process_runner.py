@@ -14,7 +14,7 @@ from typing import cast
 
 import pytest
 
-from sourceth.adapters.process import (
+from src.adapters.process import (
     DEFAULT_ALLOWED_ENVIRONMENT,
     DEFAULT_INHERITED_ENVIRONMENT,
     DEFAULT_SECRET_ENVIRONMENT,
@@ -22,7 +22,7 @@ from sourceth.adapters.process import (
     ProcessRunner,
     _WindowsJob,
 )
-from sourceth.errors import ErrorCode, ProcessExecutionError
+from src.errors import ErrorCode, ProcessExecutionError
 
 
 @pytest.fixture

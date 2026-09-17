@@ -18,9 +18,9 @@ from pathlib import Path
 from types import MappingProxyType
 from typing import Final, Protocol, cast
 
-from sourceth.adapters.egress import EgressGuardProtocol, ExplorerEgressGuard
-from sourceth.adapters.process import ProcessResult, ProcessRunnerProtocol
-from sourceth.config import (
+from src.adapters.egress import EgressGuardProtocol, ExplorerEgressGuard
+from src.adapters.process import ProcessResult, ProcessRunnerProtocol
+from src.config import (
     DEFAULT_EXPLORER_API_URL,
     DEFAULT_EXPLORER_URL,
     NetworkConfig,
@@ -28,7 +28,7 @@ from sourceth.config import (
     SecretValue,
     SourcethConfig,
 )
-from sourceth.errors import (
+from src.errors import (
     CastError,
     DownloadError,
     ErrorCode,
@@ -37,8 +37,8 @@ from sourceth.errors import (
     SourcethError,
     redact_text,
 )
-from sourceth.models import BlockObservation
-from sourceth.validation import (
+from src.models import BlockObservation
+from src.validation import (
     validate_address,
     validate_block_hash,
     validate_chain_id,

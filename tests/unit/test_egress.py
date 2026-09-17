@@ -10,7 +10,7 @@ from urllib.parse import unquote, urlsplit
 
 import pytest
 
-from sourceth.adapters.egress import ExplorerEgressGuard
+from src.adapters.egress import ExplorerEgressGuard
 
 
 def _proxy_request(proxy_url: str, authority: str) -> socket.socket:

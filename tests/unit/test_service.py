@@ -12,10 +12,10 @@ from types import MappingProxyType
 
 import pytest
 
-from sourceth.adapters.cast import CastAdapterMetrics, CastCapabilities, DownloadAttempt
-from sourceth.config import Credentials, NetworkConfig, SecretValue, SourcethConfig
-from sourceth.errors import ConfigurationError, DownloadError, ErrorCode, RpcError
-from sourceth.models import (
+from src.adapters.cast import CastAdapterMetrics, CastCapabilities, DownloadAttempt
+from src.config import Credentials, NetworkConfig, SecretValue, SourcethConfig
+from src.errors import ConfigurationError, DownloadError, ErrorCode, RpcError
+from src.models import (
     BlockObservation,
     CodeValidationStatus,
     DownloadRequest,
@@ -24,9 +24,9 @@ from sourceth.models import (
     ProxyResolutionStatus,
     SourceStatus,
 )
-from sourceth.proxy import EIP1967_BEACON_SLOT, EIP1967_IMPLEMENTATION_SLOT
-from sourceth.service import SourceDownloader
-from sourceth.store import CacheHit, RevisionStore
+from src.proxy import EIP1967_BEACON_SLOT, EIP1967_IMPLEMENTATION_SLOT
+from src.service import SourceDownloader
+from src.store import CacheHit, RevisionStore
 
 ROOT = "0x" + ("1" * 40)
 IMPLEMENTATION_A = "0x" + ("2" * 40)

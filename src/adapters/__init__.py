@@ -1,4 +1,4 @@
-from sourceth.adapters.process import (
+from src.adapters.process import (
     DEFAULT_ALLOWED_ENVIRONMENT,
     DEFAULT_INHERITED_ENVIRONMENT,
     DEFAULT_SECRET_ENVIRONMENT,

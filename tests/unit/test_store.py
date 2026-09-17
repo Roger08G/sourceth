@@ -12,14 +12,14 @@ from typing import cast
 
 import pytest
 
-from sourceth.config import ResourceLimits
-from sourceth.errors import (
+from src.config import ResourceLimits
+from src.errors import (
     ErrorCode,
     FilesystemOperationError,
     OutputSafetyError,
 )
-from sourceth.models import OverallStatus
-from sourceth.store import CacheHit, RevisionStore, RunWorkspace
+from src.models import OverallStatus
+from src.store import CacheHit, RevisionStore, RunWorkspace
 
 ROOT_ADDRESS = "0x" + ("1" * 40)
 SECOND_ADDRESS = "0x" + ("2" * 40)

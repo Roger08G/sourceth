@@ -10,14 +10,14 @@ from typing import cast
 
 import pytest
 
-from sourceth.manifest import (
+from src.manifest import (
     SCHEMA_VERSION,
     ManifestContext,
     build_manifest,
     result_json,
     serialize_manifest,
 )
-from sourceth.models import (
+from src.models import (
     BlockObservation,
     CodeValidationStatus,
     ContractResult,

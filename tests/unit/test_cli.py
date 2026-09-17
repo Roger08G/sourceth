@@ -9,11 +9,11 @@ from typing import cast
 
 import pytest
 
-import sourceth.cli as cli
-from sourceth.adapters.cast import CastCapabilities
-from sourceth.config import Credentials, NetworkConfig, SecretValue, SourcethConfig
-from sourceth.errors import ErrorCode, SourcethError, ValidationError
-from sourceth.models import (
+import src.cli as cli
+from src.adapters.cast import CastCapabilities
+from src.config import Credentials, NetworkConfig, SecretValue, SourcethConfig
+from src.errors import ErrorCode, SourcethError, ValidationError
+from src.models import (
     CodeValidationStatus,
     ContractResult,
     ContractRole,

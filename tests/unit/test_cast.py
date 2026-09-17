@@ -9,15 +9,15 @@ from pathlib import Path
 
 import pytest
 
-from sourceth.adapters.cast import (
+from src.adapters.cast import (
     CastAdapter,
     CastCapabilities,
     NativeSourceContainmentPolicy,
 )
-from sourceth.adapters.process import ProcessResult
-from sourceth.config import RetryPolicy
-from sourceth.errors import CastError, DownloadError, ErrorCode, ProcessExecutionError, RpcError
-from sourceth.models import BlockObservation
+from src.adapters.process import ProcessResult
+from src.config import RetryPolicy
+from src.errors import CastError, DownloadError, ErrorCode, ProcessExecutionError, RpcError
+from src.models import BlockObservation
 
 ADDRESS = "0x" + ("1" * 40)
 BLOCK_HASH = "0x" + ("a" * 64)

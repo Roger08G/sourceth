@@ -15,7 +15,7 @@ from dataclasses import dataclass
 from pathlib import Path, PureWindowsPath
 from typing import IO, Final, Never, Protocol, cast
 
-from sourceth.errors import ErrorCode, ProcessExecutionError
+from src.errors import ErrorCode, ProcessExecutionError
 
 _READ_CHUNK_SIZE: Final = 64 * 1024
 _WAIT_SLICE_SECONDS: Final = 0.05
@@ -481,7 +481,7 @@ class ProcessRunner:
         Un retorno distinto de cero forma parte de :class:`ProcessResult`; el
         adaptador consumidor conserva así el contexto necesario para clasificarlo.
         Timeout, exceso de salida o imposibilidad de crear/controlar el proceso
-        producen :class:`~sourceth.errors.ProcessExecutionError`.
+        producen :class:`~src.errors.ProcessExecutionError`.
         """
 
         normalized_argv = self._normalize_argv(argv)

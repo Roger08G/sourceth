@@ -9,10 +9,10 @@ from collections.abc import Iterable, Mapping, Sequence
 from pathlib import Path
 from typing import cast
 
-from sourceth.adapters.cast import CastAdapter, CastCapabilities
-from sourceth.adapters.process import ProcessResult, ProcessRunner
-from sourceth.config import RetryPolicy
-from sourceth.models import BlockObservation
+from src.adapters.cast import CastAdapter, CastCapabilities
+from src.adapters.process import ProcessResult, ProcessRunner
+from src.config import RetryPolicy
+from src.models import BlockObservation
 
 ADDRESS = "0x" + ("1" * 40)
 BLOCK_HASH = "0x" + ("a" * 64)

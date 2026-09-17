@@ -6,15 +6,15 @@ from collections.abc import Mapping
 
 import pytest
 
-from sourceth.errors import ConfigurationError, ErrorCode, SourcethError
-from sourceth.models import (
+from src.errors import ConfigurationError, ErrorCode, SourcethError
+from src.models import (
     BlockObservation,
     CodeValidationStatus,
     ContractRole,
     ProxyResolutionStatus,
     RelationKind,
 )
-from sourceth.proxy import (
+from src.proxy import (
     BEACON_IMPLEMENTATION_CALLDATA,
     EIP1967_BEACON_SLOT,
     EIP1967_IMPLEMENTATION_SLOT,
@@ -25,7 +25,7 @@ from sourceth.proxy import (
     ResolvedContract,
     _State,
 )
-from sourceth.validation import validate_address
+from src.validation import validate_address
 
 ROOT = "0x1111111111111111111111111111111111111111"
 IMPLEMENTATION = "0x2222222222222222222222222222222222222222"
