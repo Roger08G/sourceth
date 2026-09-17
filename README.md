@@ -6,13 +6,57 @@
 ██████╔╝╚█████╔╝╚██████╔╝██║░░██║╚█████╔╝███████╗░░░██║░░░██║░░██║
 ╚═════╝░░╚════╝░░╚═════╝░╚═╝░░╚═╝░╚════╝░╚══════╝░░░╚═╝░░░╚═╝░░╚═╝
 
-Sourceth es un CLI y una biblioteca Python para descargar, mediante Foundry Cast, las fuentes que
-un explorador publica para **una dirección EVM por ejecución**. Valida la entrada, puede comprobar el
+<p align="center">
+  <strong>Descarga segura y reproducible de fuentes verificadas de contratos EVM.</strong><br>
+  Una ejecución, una dirección, una revisión local con procedencia y hashes.
+</p>
+
+<p align="center">
+  <a href="https://github.com/Roger08G/sourceth/actions/workflows/ci.yml"><img src="https://github.com/Roger08G/sourceth/actions/workflows/ci.yml/badge.svg?branch=main" alt="CI"></a>
+  <a href="https://github.com/Roger08G/sourceth/releases"><img src="https://img.shields.io/github/v/release/Roger08G/sourceth?display_name=tag&amp;sort=semver" alt="Versión"></a>
+  <a href="https://github.com/Roger08G/sourceth/stargazers"><img src="https://img.shields.io/github/stars/Roger08G/sourceth?style=flat" alt="Estrellas"></a>
+  <a href="https://github.com/Roger08G/sourceth/network/members"><img src="https://img.shields.io/github/forks/Roger08G/sourceth?style=flat" alt="Forks"></a>
+  <img src="https://img.shields.io/badge/Python-3.12%2B-3776AB?logo=python&amp;logoColor=white" alt="Python 3.12 o posterior">
+  <img src="https://img.shields.io/badge/Cast-1.8.3-6E56CF?logo=ethereum&amp;logoColor=white" alt="Foundry Cast 1.8.3">
+  <a href="https://github.com/Roger08G/sourceth/blob/main/LICENSE"><img src="https://img.shields.io/github/license/Roger08G/sourceth" alt="Licencia"></a>
+  <a href="https://github.com/Roger08G/sourceth/blob/main/.github/dependabot.yml"><img src="https://img.shields.io/badge/dependencies-Dependabot-025E8C?logo=dependabot&amp;logoColor=white" alt="Dependabot"></a>
+</p>
+
+Sourceth es un CLI y una biblioteca Python que usa Foundry Cast para descargar las fuentes que un
+explorador publica para **una dirección EVM por ejecución**. Valida la entrada, puede comprobar el
 bytecode por RPC, sigue tres patrones de proxy estándar de forma opcional y crea revisiones locales
 con hashes y procedencia.
 
-No es un enumerador masivo, un framework de explotación, un decompilador ni un auditor. Tampoco
-afirma que una fuente descargada sea el repositorio original o que reproduzca el bytecode desplegado.
+> [!IMPORTANT]
+> Sourceth no es un enumerador masivo, un framework de explotación, un decompilador ni un auditor.
+> Una fuente descargada tampoco se presenta como el repositorio original ni como una prueba de
+> recompilación idéntica del bytecode desplegado.
+
+## Índice
+
+- [Características](#características)
+- [Requisitos](#requisitos)
+- [Instalación](#instalación)
+- [Configuración](#configuración)
+- [Configuración TOML](#configuración-toml)
+- [Uso](#uso)
+- [API Python](#api-python)
+- [Estructura de salida](#estructura-de-salida)
+- [Proxies soportados](#proxies-soportados)
+- [Estados y códigos de salida](#estados-y-códigos-de-salida)
+- [Pruebas](#pruebas)
+- [Seguridad y límites](#seguridad-y-límites)
+
+## Características
+
+| Área | Qué aporta |
+| --- | --- |
+| Descarga | Una dirección EVM por ejecución, con validación estricta de entrada. |
+| Integridad | Runtime bytecode, bloque coherente, SHA-256, Keccak y manifiesto reproducible. |
+| Proxies | Resolución opcional de EIP-1967, beacon EIP-1967 y ERC-1167. |
+| Seguridad | Egress HTTPS restringido, entorno hijo mínimo, límites de tiempo y tamaño. |
+| Repetibilidad | Caché, revisiones inmutables, puntero `latest.json` y almacenamiento atómico. |
+| Automatización | JSON determinista, API Python tipada y CI para Python 3.12–3.14. |
 
 ## Requisitos
 
@@ -45,7 +89,9 @@ sourceth doctor
 `doctor` comprueba el binario, la versión, la interfaz necesaria y la presencia de configuración.
 No hace llamadas de red salvo que se añada `--remote`.
 
-## API key y RPC mediante `.env`
+## Configuración
+
+### API key y RPC mediante `.env`
 
 ```bash
 cp .env.example .env
@@ -262,7 +308,7 @@ La interfaz local se contrastó offline con el artefacto oficial de Cast 1.8.3: 
 `cast source --help` y `cast rpc --help`. No se proporcionaron credenciales reales ni se ejecutó
 una descarga contra mainnet; la prueba `real` sigue siendo deliberadamente opt-in.
 
-## Límites de seguridad y validación
+## Seguridad y límites
 
 La salida de `cast source -d` se escribe antes de que Python pueda inspeccionarla. La implementación
 oficial revisada no garantiza contención de prefijos absolutos de Windows, por lo que Sourceth
