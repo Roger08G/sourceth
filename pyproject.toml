@@ -12,7 +12,7 @@ authors = [{ name = "Roger Gomez Martinez" }]
 dependencies = [
     "eth-hash[pycryptodome]>=0.7.1,<1",
     "eth-utils>=5.3.1,<6",
-    "filelock>=3.16,<4",
+    "filelock>=3.16,<5",
     "python-dotenv>=1.1,<2",
     "rich>=13.9,<15",
 ]
